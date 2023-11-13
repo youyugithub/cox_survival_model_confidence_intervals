@@ -171,10 +171,11 @@ vvbH<-var_b_H$vvbH
 vvHH<-var_b_H$vvHH
 
 est_logH_bx<-log(sum(a_1*haz))+sum(a_x*beta)
+est_H<-sum(a_1*haz)
 se_logH_bx<-
   sqrt(c(t(a_x)%*%vvbb%*%a_x)+
-         c(2*t(a_x)%*%vvbH)/estH+
-         vvHH/estH/estH)
+         c(2*t(a_x)%*%vvbH)/est_H+
+         vvHH/est_H/est_H)
 
 exp(-exp(est_logH_bx))
 exp(-exp(est_logH_bx+c(1,-1)*qnorm(0.975)*se_logH_bx))
